@@ -62,7 +62,11 @@ export function sanitize(s: string, options?: sanitizeHtml.IOptions) {
       ...options?.transformTags,
     },
     exclusiveFilter(frame) {
-      return frame.tag === 'a' && !frame.text.trim();
+      if (frame.tag === 'a') {
+        const txt = frame.text.trim();
+        return !txt || txt.toLocaleLowerCase() === 'back to top';
+      }
+      return false;
     },
   });
 }
