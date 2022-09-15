@@ -1,0 +1,13 @@
+{
+  "extends": "@apify/tsconfig",
+  "compilerOptions": {
+    "strict": true,
+    "allowSyntheticDefaultImports": true,
+    "alwaysStrict": true,
+    "skipLibCheck": true,
+    "module": "ES2022",
+    "target": "ES2022",
+    "noUnusedLocals": false,
+    "lib": ["DOM"]
+  }
+}

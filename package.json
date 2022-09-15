@@ -1,0 +1,28 @@
+{
+  "name": "@wng/apify-actors",
+  "packageManager": "pnpm@7.11.0",
+  "private": "true",
+  "type": "module",
+  "scripts": {
+    "dev:all": "pnpm -r --filter \"./packages/*\" --parallel dev",
+    "build:all": "pnpm -r --filter \"./packages/*\" --parallel build",
+    "prepare": "husky install",
+    "precommit": "lint-staged",
+    "test": "pnpm run build:all && pnpm run -r test"
+  },
+  "devDependencies": {
+    "@apify/tsconfig": "^0.1.0",
+    "@types/node": "^16.11.59",
+    "@typescript-eslint/eslint-plugin": "^5.37.0",
+    "@typescript-eslint/parser": "^5.37.0",
+    "eslint": "^8.23.1",
+    "eslint-config-prettier": "^8.5.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
+    "typescript": "^4.8.3"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
+  }
+}

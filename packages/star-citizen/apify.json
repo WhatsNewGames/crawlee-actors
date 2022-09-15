@@ -1,0 +1,7 @@
+{
+  "name": "@wng/star-citizen",
+  "version": "0.1",
+  "buildTag": "latest",
+  "env": null,
+  "template": "project_cheerio_crawler_ts"
+}

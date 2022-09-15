@@ -1,0 +1,13 @@
+# This file tells Git which files shouldn't be added to source control
+
+.idea
+
+/dist
+/node_modules
+/apify_storage
+/storage
+
+/packages/*/dist
+/packages/*/node_modules
+/packages/*/apify_storage
+/packages/*/storage
