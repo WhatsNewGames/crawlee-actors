@@ -2,10 +2,12 @@
 .idea
 .vscode
 
-# crawlee and apify storage folders
+dist
+node_modules
 apify_storage
-crawlee_storage
 storage
 
-# installed files
-node_modules
+packages/*/dist
+packages/*/node_modules
+packages/*/apify_storage
+packages/*/storage

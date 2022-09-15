@@ -11,3 +11,7 @@
 /packages/*/node_modules
 /packages/*/apify_storage
 /packages/*/storage
+
+# Those are symlinked before building the image
+/apify.json
+/INPUT_SCHEMA.json
