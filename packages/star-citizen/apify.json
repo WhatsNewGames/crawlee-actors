@@ -1,5 +1,5 @@
 {
-  "name": "@wng/star-citizen",
+  "name": "star-citizen",
   "version": "0.1",
   "buildTag": "latest",
   "env": null,

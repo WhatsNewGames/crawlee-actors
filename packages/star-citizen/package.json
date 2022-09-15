@@ -26,6 +26,7 @@
     "build": "tsc",
     "lint": "prettier --check ./src",
     "lint:fix": "prettier --write ./src",
+    "apify:push": "apify push",
     "test": "echo \"Error: oops, the actor has no tests yet, sad!\" && exit 1"
   },
   "author": "Joël Charles",
