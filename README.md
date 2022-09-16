@@ -2,7 +2,7 @@
 
 All crawlers used by What's New Games are referenced in this monorepo.
 
-## I want to edit one of crawler
+## I want to edit a crawler
 
 Fork this repo and clone your fork onto your machine. Then:
 
@@ -17,8 +17,12 @@ pnpm run start
 
 # remove this folder if your want to start another run:
 rm -rf packages/<game-slug>/storage
-
 ```
+
+Then you should be ready to edit the source under `packages/<game-slug>/src` directory.
+
+Last step would be to create a Pull Request onto this repo.
+Once merged, it shouldn't be long before its data is imported into What's New Games.
 
 ## I want to create a new crawler
 
@@ -38,7 +42,7 @@ Now you also need to:
 - Edit `packages/<game-slug>/INPUT_SCHEMA.json` `title` and `description` keys to match the right game
 - Edit `packages/<game-slug>/package.json` `name`, `description` and `scripts['apify:push']` keys to match the right game
 
-Then you should be ready to edit the source under `packages/<game-slug>/src` directory.
+Then check the steps of [#i-want-to-edit-a-crawler](I want to edit a crawler).
 
 ## Documentation reference
 
