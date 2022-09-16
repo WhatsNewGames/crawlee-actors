@@ -7,6 +7,9 @@
   "engines": {
     "node": ">=16.0.0"
   },
+  "config": {
+    "slug": "star-citizen"
+  },
   "dependencies": {
     "apify": "^3.0.2",
     "crawlee": "^3.0.4",
