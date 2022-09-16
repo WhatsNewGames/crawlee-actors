@@ -3,7 +3,9 @@
   "version": "0.1",
   "buildTag": "latest",
   "env": {
-    "FOLDER": "star-citizen"
+    "FOLDER": "star-citizen",
+    "APIFY_DEFAULT_DATASET_ID": "star-citizen",
+    "APIFY_DEFAULT_REQUEST_QUEUE_ID": "star-citizen"
   },
   "template": "project_cheerio_crawler_ts"
 }

@@ -38,7 +38,7 @@ cp -a `packages/star-citizen` `packages/<game-slug>`
 
 Now you also need to:
 
-- Edit `packages/<game-slug>/apify.json` `name` and `env.FOLDER` keys to match `<game-slug>`
+- Edit `packages/<game-slug>/apify.json` `name` and `env.*` keys to match `<game-slug>`
 - Edit `packages/<game-slug>/INPUT_SCHEMA.json` `title` and `description` keys to match the right game
 - Edit `packages/<game-slug>/package.json` `name`, `description` and `scripts['apify:push']` keys to match the right game
 
