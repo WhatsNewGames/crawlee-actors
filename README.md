@@ -42,7 +42,7 @@ Now you also need to:
 - Edit `packages/<game-slug>/INPUT_SCHEMA.json` `title` and `description` keys to match the right game
 - Edit `packages/<game-slug>/package.json` `name`, `description` and `scripts['apify:push']` keys to match the right game
 
-Then check the steps of [#i-want-to-edit-a-crawler](I want to edit a crawler).
+Then check the steps of [I want to edit a crawler](#i-want-to-edit-a-crawler).
 
 ## Documentation reference
 
