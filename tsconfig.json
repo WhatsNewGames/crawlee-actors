@@ -5,7 +5,7 @@
     "allowSyntheticDefaultImports": true,
     "alwaysStrict": true,
     "skipLibCheck": true,
-    "module": "ES2022",
+    "module": "ESNext",
     "target": "ES2022",
     "noUnusedLocals": false,
     "lib": ["DOM"]

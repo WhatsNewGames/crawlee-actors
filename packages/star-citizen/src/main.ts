@@ -9,7 +9,7 @@ import { Actor } from 'apify';
 // For more information, see https://crawlee.dev
 import { CheerioCrawler } from 'crawlee';
 import { router } from './routes.js';
-import { config } from '../package.json';
+import packageJson from '../package.json' assert { type: 'json' };
 
 // Initialize the Apify SDK
 await Actor.init();
@@ -17,7 +17,7 @@ await Actor.init();
 // Do not touch
 const datasetId = Actor.getEnv().defaultDatasetId;
 await Actor.setValue('DATASET_ID', datasetId);
-await Actor.setValue('SLUG', config.slug);
+await Actor.setValue('SLUG', packageJson.config.slug);
 
 const startUrls = ['https://robertsspaceindustries.com/patch-notes'];
 
