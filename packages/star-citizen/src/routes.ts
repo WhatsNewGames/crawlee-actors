@@ -13,9 +13,6 @@ router.addDefaultHandler(async ({ enqueueLinks, log }) => {
   await enqueueLinks({
     globs: ['https://robertsspaceindustries.com/comm-link/**'],
     label: 'note',
-    // transformRequestFunction(original) {
-    // can return `null` heree to ignore URL
-    // }
   });
 });
 
