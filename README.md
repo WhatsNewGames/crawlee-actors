@@ -29,10 +29,10 @@ Once merged, it shouldn't be long before its data is imported into What's New Ga
 Fork this repo and add copy duplicate `packages/star-citizen` under `packages/<game-slug>`.
 
 ```sh
-# <game-slug> should be the same as the one use on What's New Games if possible
-# Go to https://whatsnew.games and search for the game you want to create a crawler for
-# The URL will look like https://whatsnew.games/game/horizon-forbidden-west
-# The slug is the part after `game/`, i.e. `horizon-forbidden-west` in this case
+# <game-slug> should be the same as the one used on What's New Games if possible.
+# Go to https://whatsnew.games and search for the game you want to create a crawler for.
+# The URL will look like https://whatsnew.games/game/horizon-forbidden-west.
+# The slug is the part after `game/`, i.e. `horizon-forbidden-west` in this case.
 cp -a `packages/star-citizen` `packages/<game-slug>`
 ```
 
