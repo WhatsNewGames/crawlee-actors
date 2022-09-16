@@ -3,6 +3,8 @@
 folder="$1"
 script_dir=$(dirname $(realpath "$0"))
 
+# TODO: check that $folder exists and corresponds to pwd
+
 echo folder: $folder
 
 pushd $script_dir
