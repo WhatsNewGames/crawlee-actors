@@ -4,9 +4,6 @@ import { sanitize } from './common.js';
 import { parseStarCitizenDate } from './helpers.js';
 
 export const router = createCheerioRouter();
-const dataset = await Actor.openDataset('star-citizen', {
-  forceCloud: Boolean(process.env.CI || process.env.APIFY_ACTOR_ID),
-});
 
 router.addDefaultHandler(async ({ enqueueLinks, log }) => {
   log.info(`enqueueing new URLs`);
@@ -46,7 +43,7 @@ router.addHandler('note', async ({ request, $, log }) => {
   // Use "log" object to print information to actor log.
   log.info('Page scraped', { url, title, date });
 
-  await dataset.pushData({
+  await Actor.pushData({
     url,
     date,
     title,
