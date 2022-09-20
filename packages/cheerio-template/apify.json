@@ -1,5 +1,5 @@
 {
-  "name": "{{NAME}}",
+  "name": "{{SLUG}}",
   "version": "0.1",
   "buildTag": "latest",
   "env": {
