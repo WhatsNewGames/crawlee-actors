@@ -26,21 +26,24 @@ Once merged, it shouldn't be long before its data is imported into What's New Ga
 
 ## I want to create a new crawler
 
-Fork this repo and add copy duplicate `packages/star-citizen` under `packages/<game-slug>`.
+Run the following command. It will prompt for necessary information:
 
 ```sh
-# <game-slug> should be the same as the one used on What's New Games if possible.
-# Go to https://whatsnew.games and search for the game you want to create a crawler for.
-# The URL will look like https://whatsnew.games/game/horizon-forbidden-west.
-# The slug is the part after `game/`, i.e. `horizon-forbidden-west` in this case.
-cp -a `packages/star-citizen` `packages/<game-slug>`
+pnpm run create-actor
+
+# ? Game slug
+# ? Game name
+# ? Package folder (created under ./packages)
+# ? Dataset ID
+# ? Request Queue ID
 ```
 
-Now you also need to:
+_Game slug_ and _Game name_ are mandatory. Keep default values for the rest unless you know what you are doing.
+_Game slug_ can be found on [What's New Games](https://whatsnew.games):
 
-- Edit `packages/<game-slug>/apify.json` `name` and `env.*` keys to match `<game-slug>`
-- Edit `packages/<game-slug>/INPUT_SCHEMA.json` `title` and `description` keys to match the right game
-- Edit `packages/<game-slug>/package.json` `name`, `description`, `config.slug` and `scripts['apify:push']` keys to match the right game
+- Search for the game you want to add
+- Click on it. The URL will look like `https://whatsnew.games/game/star-citizen`
+- The _Game slug_ is the part after `/game/`, i.e. `star-citizen` in this example
 
 Then check the steps of [I want to edit a crawler](#i-want-to-edit-a-crawler).
 
