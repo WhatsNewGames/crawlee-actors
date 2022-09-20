@@ -1,7 +1,6 @@
 import { Actor } from 'apify';
 import { createCheerioRouter } from 'crawlee';
-import { sanitize } from './common.js';
-import { parseStarCitizenDate } from './helpers.js';
+import { sanitize, parseDate } from '@wng/common';
 
 export const router = createCheerioRouter();
 
@@ -15,7 +14,7 @@ router.addDefaultHandler(async ({ enqueueLinks, log }) => {
 
 router.addHandler('note', async ({ request, $, log }) => {
   const { url } = request;
-  const title = $('#post > .title-section .title').text()?.trim();
+  const title = $('#post > .title-section .title').text().trim();
   const content = sanitize($('#post > .wrapper').first().html() ?? '', {
     transformTags: {
       span: (tagName, attribs) => {
@@ -30,7 +29,7 @@ router.addHandler('note', async ({ request, $, log }) => {
       },
     },
   });
-  const date = parseStarCitizenDate($('#post > .title-section .details > div:nth-child(3) > p').text());
+  const date = parseDate('MMMM Do YYYY', $('#post > .title-section .details > div:nth-child(3) > p').text());
 
   if (!content) {
     log.error('Page scraped but selector returned empty result', {
