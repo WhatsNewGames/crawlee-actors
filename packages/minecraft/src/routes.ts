@@ -1,12 +1,13 @@
 import { Actor } from 'apify';
 import { createCheerioRouter } from 'crawlee';
-import { sanitize, parseDate } from '@wng/common';
+import { sanitize, parseDate, getInput } from '@wng/common';
 
 export const router = createCheerioRouter();
 
-const input = await Actor.getInput<Record<string, unknown>>();
-
 router.addDefaultHandler(async ({ enqueueLinks, log }) => {
+  const input = await getInput();
+
+  log.info(`INPUT: ${JSON.stringify(input)}`);
   log.info(`enqueueing new URLs`);
 
   if (input?.scanAll) {
