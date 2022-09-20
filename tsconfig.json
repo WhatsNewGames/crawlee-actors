@@ -3,6 +3,7 @@
   "compilerOptions": {
     "strict": true,
     "allowSyntheticDefaultImports": true,
+    "emitDecoratorMetadata": false,
     "alwaysStrict": true,
     "skipLibCheck": true,
     "module": "ESNext",

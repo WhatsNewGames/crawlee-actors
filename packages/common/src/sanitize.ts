@@ -1,7 +1,7 @@
 import sanitizeHtml from 'sanitize-html';
 
-export function sanitize(s: string, options?: sanitizeHtml.IOptions) {
-  return sanitizeHtml(s, {
+export function sanitize(s: string | null | undefined, options?: sanitizeHtml.IOptions) {
+  return sanitizeHtml(s ?? '', {
     ...options,
     allowedTags: [
       'h1',
