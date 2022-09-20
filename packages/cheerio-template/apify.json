@@ -1,0 +1,11 @@
+{
+  "name": "{{NAME}}",
+  "version": "0.1",
+  "buildTag": "latest",
+  "env": {
+    "FOLDER": "{{FOLDER}}",
+    "APIFY_DEFAULT_DATASET_ID": "{{DATASET_ID}}",
+    "APIFY_DEFAULT_REQUEST_QUEUE_ID": "{{REQUEST_QUEUE_ID}}"
+  },
+  "template": "project_cheerio_crawler_ts"
+}

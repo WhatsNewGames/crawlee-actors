@@ -1,0 +1,37 @@
+{
+  "name": "@wng/{{FOLDER}}",
+  "version": "0.0.1",
+  "private": "true",
+  "type": "module",
+  "description": "{{NAME}} crawler for What's New Games",
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "config": {
+    "slug": "{{SLUG}}"
+  },
+  "dependencies": {
+    "apify": "^3.0.2",
+    "crawlee": "^3.0.4",
+    "fecha": "^4.2.3",
+    "sanitize-html": "^2.7.2"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.59",
+    "@types/sanitize-html": "^2.6.2",
+    "esno": "^0.16.3",
+    "typescript": "^4.8.3"
+  },
+  "scripts": {
+    "start": "pnpm run start:dev",
+    "start:prod": "node dist/src/main.js",
+    "start:dev": "esno src/main.ts",
+    "build": "tsc",
+    "lint": "prettier --check ./src",
+    "lint:fix": "prettier --write ./src",
+    "apify:push": "../../apify-push.sh {{FOLDER}}",
+    "test": "echo \"Error: oops, the actor has no tests yet, sad!\" && exit 1"
+  },
+  "author": "Joël Charles",
+  "license": "MIT"
+}
