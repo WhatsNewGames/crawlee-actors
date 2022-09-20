@@ -19,7 +19,6 @@ const datasetId = Actor.getEnv().defaultDatasetId;
 await Actor.setValue('DATASET_ID', datasetId);
 await Actor.setValue('SLUG', packageJson.config.slug);
 
-// TODO: support fullscan through INPUT (scan all pages)
 const startUrls = ['https://feedback.minecraft.net/hc/en-us/sections/360001186971?page=1'];
 
 const crawler = new CheerioCrawler({

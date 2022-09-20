@@ -3,5 +3,11 @@
   "description": "Minecraft crawler for What's New Games",
   "type": "object",
   "schemaVersion": 1,
-  "properties": {}
+  "properties": {
+    "scanAll": {
+      "title": "Scan all pages instead of just the first one",
+      "type": "boolean",
+      "default": false
+    }
+  }
 }

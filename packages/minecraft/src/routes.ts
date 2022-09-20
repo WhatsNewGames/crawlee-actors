@@ -4,8 +4,17 @@ import { sanitize, parseDate } from '@wng/common';
 
 export const router = createCheerioRouter();
 
+const input = await Actor.getInput<Record<string, unknown>>();
+
 router.addDefaultHandler(async ({ enqueueLinks, log }) => {
   log.info(`enqueueing new URLs`);
+
+  if (input?.scanAll) {
+    await enqueueLinks({
+      globs: ['https://feedback.minecraft.net/hc/en-us/sections/360001186971-Release-Changelogs?page=*'],
+    });
+  }
+
   await enqueueLinks({
     globs: ['https://feedback.minecraft.net/hc/en-us/articles/*'],
     label: 'note',
