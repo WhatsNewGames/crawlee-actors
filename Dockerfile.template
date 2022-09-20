@@ -3,8 +3,7 @@ FROM apify/actor-node:16 AS pnpm
 RUN rm -rf node_modules
 ARG PNPM_VERSION=7.11.0
 
-ARG FOLDER
-ENV FOLDER=${FOLDER}
+ENV FOLDER={{FOLDER}}
 
 # Install pnpm
 RUN npm --no-fund --global install pnpm@${PNPM_VERSION}

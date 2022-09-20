@@ -13,6 +13,7 @@ tsconfig.tsbuildinfo
 /packages/*/apify_storage
 /packages/*/storage
 
-# Those are symlinked before building the image
+# Those are symlinked/copied before building the image
 /apify.json
 /INPUT_SCHEMA.json
+/Dockerfile
