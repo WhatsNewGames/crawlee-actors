@@ -11,6 +11,7 @@ export function sanitize(s: string | null | undefined, options?: sanitizeHtml.IO
       'h5',
       'h6',
       'span',
+      'div',
       'hr',
       'a',
       'img',
@@ -32,16 +33,34 @@ export function sanitize(s: string | null | undefined, options?: sanitizeHtml.IO
       'iframe',
       'youtube-privacy',
     ],
+    allowedClasses: {
+      '*': [
+        'uppercase',
+        'font-bold',
+        'italic',
+        'underline',
+        'line-through',
+        'grid',
+        'grid-*',
+        'gap-*',
+        'h-*',
+        'w-*',
+        'flex',
+        'flex-*',
+        'items-*',
+        'justify-*',
+        'not-prose',
+        'hero',
+        'hero-*',
+        'mt-*',
+        'bg-*',
+        'badge',
+        'badge-*',
+      ],
+    },
     allowedAttributes: {
       a: ['href'],
-      span: [
-        'style',
-        {
-          name: 'class',
-          multiple: true,
-          values: ['uppercase', 'font-bold', 'italic', 'underline', 'line-through'],
-        },
-      ],
+      span: ['style'],
       img: ['src', 'loading'],
       iframe: ['src', 'frameborder', 'allowfullscreen', 'loading', 'referrerpolicy', 'height', 'width'],
       'youtube-privacy': ['src', 'frameborder', 'allowfullscreen', 'loading', 'referrerpolicy', 'height', 'width'],
@@ -63,10 +82,12 @@ export function sanitize(s: string | null | undefined, options?: sanitizeHtml.IO
     },
     exclusiveFilter(frame) {
       if (frame.tag === 'a') {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        if ((frame as any).mediaChildren?.length ?? 0 > 0) return false;
         const txt = frame.text.trim();
         return !txt || txt.toLocaleLowerCase() === 'back to top';
       }
-      return false;
+      return options?.exclusiveFilter ? options.exclusiveFilter(frame) : false;
     },
-  });
+  }).replace(/\s+/g, ' ');
 }
