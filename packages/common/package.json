@@ -8,7 +8,6 @@
     "node": ">=16.0.0"
   },
   "dependencies": {
-    "@crawlee/core": "^3.0.4",
     "apify": "^3.0.2",
     "crawlee": "^3.0.4",
     "fecha": "^4.2.3",

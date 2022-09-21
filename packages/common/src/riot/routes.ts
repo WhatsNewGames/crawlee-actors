@@ -1,6 +1,5 @@
 import { Actor } from 'apify';
-import { createCheerioRouter } from 'crawlee';
-import { enqueueLinks } from '@crawlee/core';
+import { createCheerioRouter, enqueueLinks } from 'crawlee';
 import { sanitize, parseDate } from '../index.js';
 import { JSONData } from './types.js';
 
