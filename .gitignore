@@ -3,6 +3,8 @@
 .idea
 tsconfig.tsbuildinfo
 
+.env
+
 /dist
 /node_modules
 /apify_storage

@@ -9,7 +9,8 @@
     "prepare": "husky install",
     "precommit": "lint-staged",
     "test": "pnpm run build:all && pnpm run -r test",
-    "create-actor": "esno ./scripts/create-actor.ts"
+    "create-actor": "esno ./scripts/create-actor.ts",
+    "verify-webhooks": "esno ./scripts/verify-webhooks.ts"
   },
   "devDependencies": {
     "@apify/tsconfig": "^0.1.0",
@@ -18,6 +19,8 @@
     "@types/node": "^16.11.59",
     "@typescript-eslint/eslint-plugin": "^5.37.0",
     "@typescript-eslint/parser": "^5.37.0",
+    "apify-client": "^2.6.0",
+    "dotenv": "^16.0.2",
     "eslint": "^8.23.1",
     "eslint-config-prettier": "^8.5.0",
     "esno": "^0.16.3",
