@@ -11,7 +11,6 @@
     "slug": "league-of-legends"
   },
   "dependencies": {
-    "@crawlee/core": "^3.0.4",
     "@wng/common": "workspace:*",
     "apify": "^3.0.2",
     "crawlee": "^3.0.4"

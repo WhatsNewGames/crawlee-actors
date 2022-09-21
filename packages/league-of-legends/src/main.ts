@@ -8,7 +8,7 @@
 import { Actor } from 'apify';
 // For more information, see https://crawlee.dev
 import { CheerioCrawler } from 'crawlee';
-import { router } from './routes.js';
+import { riot } from '@wng/common';
 import packageJson from '../package.json' assert { type: 'json' };
 
 // Initialize the Apify SDK
@@ -22,7 +22,7 @@ await Actor.setValue('SLUG', packageJson.config.slug);
 const startUrls = ['https://www.leagueoflegends.com/page-data/en-us/news/tags/patch-notes/page-data.json'];
 
 const crawler = new CheerioCrawler({
-  requestHandler: router,
+  requestHandler: riot.router,
 });
 
 await crawler.run(
