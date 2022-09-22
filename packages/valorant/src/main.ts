@@ -15,7 +15,7 @@ router.addHandler('note', async ({ request, $, log }) => {
   // Example
   const title = $(getCssSelector('NewsArticleContent-module--title-'), base).text().trim();
   const date = $(getCssSelector('NewsArticleContent-module--date-'), base).text().trim();
-  const content = $(getCssSelector('NewsArticleContent-module--articleTextContent'), base).html();
+  const content = $(getCssSelector('NewsArticleContent-module--articleTextContent-'), base).html();
 
   if (!content) {
     log.error('Page scraped but selector returned empty result', {
