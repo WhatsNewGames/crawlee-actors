@@ -1,0 +1,11 @@
+{
+  "name": "valorant",
+  "version": "0.1",
+  "buildTag": "latest",
+  "env": {
+    "FOLDER": "valorant",
+    "APIFY_DEFAULT_DATASET_ID": "valorant",
+    "APIFY_DEFAULT_REQUEST_QUEUE_ID": "valorant"
+  },
+  "template": "project_cheerio_crawler_ts"
+}

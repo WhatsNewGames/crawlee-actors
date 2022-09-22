@@ -69,7 +69,7 @@ const result = await fetch('https://localhost:3000/api/apify/webhook', {
   body: JSON.stringify({
     authorization: `Bearer ${process.env.API_SECRET_KEY}`,
     eventType: 'LOCALHOST',
-    slug: 'fortnite',
+    slug,
     items: files.map((f) => JSON.parse(f)),
   }),
 });
