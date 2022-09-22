@@ -1,6 +1,6 @@
 import { Actor } from 'apify';
 import { createCheerioRouter, enqueueLinks } from 'crawlee';
-import { sanitize, parseDate } from '../index.js';
+import { pushData } from '../index.js';
 import { JSONData } from './types.js';
 
 const baseUrl = 'https://www.leagueoflegends.com/en-us/';
@@ -37,8 +37,9 @@ router.addHandler('note', async ({ request, $, log }) => {
   const { url } = request;
 
   // Example
-  const title = $('h1').first().text().trim();
-  const date = parseDate('isoDateTime', $('time[datetime]').first().attr('datetime'));
+  const title = $('h1').first().text();
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const date = $('time[datetime]').first().attr('datetime')!;
 
   // Apply Tailwind classes. Make sure that the added classes are whitelisted in `sanitize`.
   $('#patch-notes-container .context-designer').addClass('flex flex-row items-center gap-2 not-prose');
@@ -52,14 +53,7 @@ router.addHandler('note', async ({ request, $, log }) => {
   $('#patch-notes-container .attribute .removed').addClass('badge badge-error');
   $('#patch-notes-container .attribute .updated').addClass('badge badge-info');
 
-  const content = sanitize($('#patch-notes-container').html(), {
-    exclusiveFilter(frame) {
-      if (frame.tag === 'h2' && frame.attribs.id === 'patch-top') {
-        return true;
-      }
-      return false;
-    },
-  });
+  const content = $('#patch-notes-container').html();
 
   if (!content) {
     log.error('Page scraped but selector returned empty result', {
@@ -77,5 +71,20 @@ router.addHandler('note', async ({ request, $, log }) => {
     date,
     title,
     content,
+  });
+
+  await pushData({
+    url,
+    date: { date, format: 'isoDateTime' },
+    title,
+    content,
+    sanitizeOptions: {
+      exclusiveFilter(frame) {
+        if (frame.tag === 'h2' && frame.attribs.id === 'patch-top') {
+          return true;
+        }
+        return false;
+      },
+    },
   });
 });

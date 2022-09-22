@@ -1,6 +1,5 @@
-import { Actor } from 'apify';
 import { createCheerioRouter } from 'crawlee';
-import { sanitize, parseDate } from '@wng/common';
+import { pushData } from '@wng/common';
 
 export const router = createCheerioRouter();
 
@@ -16,9 +15,9 @@ router.addHandler('note', async ({ request, $, log }) => {
   const { url } = request;
 
   // Example
-  const title = $('#post > .title-section .title').text()?.trim();
-  const date = parseDate('MMMM Do YYYY', $('#post > .title-section .details > div:nth-child(3) > p').text());
-  const content = sanitize($('#post > .wrapper').first().html());
+  const title = $('#post > .title-section .title').text();
+  const date = $('#post > .title-section .details > div:nth-child(3) > p').text();
+  const content = $('#post > .wrapper').first().html();
 
   if (!content) {
     log.error('Page scraped but selector returned empty result', {
@@ -31,9 +30,9 @@ router.addHandler('note', async ({ request, $, log }) => {
   // Use "log" object to print information to actor log.
   log.info('Page scraped', { url, title, date });
 
-  await Actor.pushData({
+  await pushData({
     url,
-    date,
+    date: { date, format: 'MMMM Do YYYY' },
     title,
     content,
   });
