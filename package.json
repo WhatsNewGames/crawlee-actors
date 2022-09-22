@@ -10,7 +10,7 @@
     "precommit": "lint-staged",
     "test": "pnpm run build:all && pnpm run -r test",
     "create-actor": "esno ./scripts/create-actor.ts",
-    "verify-webhooks": "esno ./scripts/verify-webhooks.ts"
+    "apify-check-health": "esno ./scripts/apify-check-health.ts"
   },
   "devDependencies": {
     "@apify/tsconfig": "^0.1.0",

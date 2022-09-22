@@ -1,4 +1,4 @@
-import { ActorCollectionListItem, ApifyClient, Webhook } from 'apify-client';
+import { ActorCollectionListItem, ApifyClient, ScheduleActionRunActor, ScheduleActions, Webhook } from 'apify-client';
 import { readFile } from 'fs/promises';
 import { homedir } from 'os';
 import { join } from 'path';
@@ -15,6 +15,7 @@ if (!process.env.API_SECRET_KEY) {
 }
 
 const requestUrl = 'https://whatsnew.games/api/apify/webhook';
+const scheduleName = 'daily-scans';
 const payloadTemplate = `{
   "authorization": "Bearer ${process.env.API_SECRET_KEY}",
   "userId": {{userId}},
@@ -34,8 +35,19 @@ const client = new ApifyClient({
   token: file.token,
 });
 
+const schedules = await client.schedules().list();
+const schedule = schedules.items.find((s) => s.name === scheduleName);
+
+if (!schedule) {
+  throw new Error(`Missing schedule ${scheduleName}`);
+}
+
+const actorsWithSchedule = new Set(
+  schedule.actions.filter((a): a is ScheduleActionRunActor => 'actorId' in a).map((a) => a.actorId),
+);
 const actors = await client.actors().list();
 const actorsWithMissingWebhook: ActorCollectionListItem[] = [];
+const actorsWithMissingSchedule: ActorCollectionListItem[] = [];
 
 const webhooks = await client.webhooks().list();
 const webhooksByActors = new Map<string, Omit<WebhookCustom, 'payloadTemplate'>>();
@@ -50,17 +62,21 @@ for (const actor of actors.items) {
   if (!webhooksByActors.has(actor.id)) {
     actorsWithMissingWebhook.push(actor);
   }
+  if (!actorsWithSchedule.has(actor.id)) {
+    actorsWithMissingSchedule.push(actor);
+  }
 }
 
-if (actorsWithMissingWebhook.length) {
-  console.log('Webhook missing for the following actors:');
-  actorsWithMissingWebhook.map((s) => '\t' + s.name).forEach((s) => console.log(s));
+if (actorsWithMissingWebhook.length || actorsWithMissingSchedule.length) {
+  console.log('Webhook/Schedules missing for the following actors:');
+  actorsWithMissingWebhook.map((s) => '\twebhook: ' + s.name).forEach((s) => console.log(s));
+  actorsWithMissingSchedule.map((s) => '\tschedule: ' + s.name).forEach((s) => console.log(s));
 
   const answers = await inquirer.prompt([
     {
       type: 'confirm',
       name: 'next',
-      message: 'Create the missing webhooks?',
+      message: 'Create the missing webhooks and schedules?',
       default: false,
     },
   ]);
@@ -77,6 +93,20 @@ if (actorsWithMissingWebhook.length) {
       payloadTemplate,
     });
   }
+  if (actorsWithMissingSchedule.length) {
+    await client.schedule(schedule.id).update({
+      actions: schedule.actions.concat(
+        actorsWithMissingSchedule.map(
+          (a) =>
+            ({
+              type: ScheduleActions.RunActor,
+              actorId: a.id,
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            } as any),
+        ),
+      ),
+    });
+  }
 } else {
-  console.log('All actors have an active webhook in production');
+  console.log('All actors have an active webhook and schedule in production');
 }
