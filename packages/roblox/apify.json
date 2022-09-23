@@ -1,0 +1,11 @@
+{
+  "name": "roblox",
+  "version": "0.1",
+  "buildTag": "latest",
+  "env": {
+    "FOLDER": "roblox",
+    "APIFY_DEFAULT_DATASET_ID": "roblox",
+    "APIFY_DEFAULT_REQUEST_QUEUE_ID": "roblox"
+  },
+  "template": "project_cheerio_crawler_ts"
+}
