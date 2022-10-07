@@ -1,6 +1,6 @@
 {
   "name": "@wng/apify-actors",
-  "packageManager": "pnpm@7.11.0",
+  "packageManager": "pnpm@7.13.2",
   "private": "true",
   "type": "module",
   "scripts": {
