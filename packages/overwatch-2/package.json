@@ -1,14 +1,14 @@
 {
-  "name": "@wng/{{FOLDER}}",
+  "name": "@wng/overwatch-2",
   "version": "0.0.1",
   "private": "true",
   "type": "module",
-  "description": "{{NAME}} crawler for What's New Games",
+  "description": "Overwatch 2 crawler for What's New Games",
   "engines": {
     "node": ">=16.0.0"
   },
   "config": {
-    "slug": "{{SLUG}}"
+    "slug": "overwatch-2"
   },
   "dependencies": {
     "apify": "^3.0.2",
@@ -28,7 +28,7 @@
     "build": "tsup",
     "lint": "prettier --check ./src",
     "lint:fix": "prettier --write ./src",
-    "apify:push": "../../apify-push.sh {{FOLDER}}",
+    "apify:push": "../../apify-push.sh overwatch-2",
     "test": "echo \"Error: oops, the actor has no tests yet, sad!\" && exit 1"
   },
   "author": "Joël Charles",
