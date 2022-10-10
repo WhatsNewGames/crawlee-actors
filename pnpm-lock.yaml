@@ -196,6 +196,25 @@ importers:
       tsup: 6.2.3_typescript@4.8.4
       typescript: 4.8.4
 
+  packages/rocket-league:
+    specifiers:
+      '@types/node': ^16.11.64
+      '@wng/common': workspace:*
+      apify: ^3.0.2
+      crawlee: ^3.0.4
+      esno: ^0.16.3
+      tsup: ^6.2.3
+      typescript: ^4.8.4
+    dependencies:
+      '@wng/common': link:../common
+      apify: 3.0.2
+      crawlee: 3.0.4
+    devDependencies:
+      '@types/node': 16.11.64
+      esno: 0.16.3
+      tsup: 6.2.3_typescript@4.8.4
+      typescript: 4.8.4
+
   packages/star-citizen:
     specifiers:
       '@types/node': ^16.11.64
