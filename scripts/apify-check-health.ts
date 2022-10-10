@@ -5,6 +5,7 @@ import { join } from 'path';
 import inquirer from 'inquirer';
 import { exit } from 'process';
 import * as dotenv from 'dotenv';
+import { ApifyApiError } from 'apify-client/dist/apify_api_error.js';
 
 dotenv.config({
   path: join(homedir(), 'workspace/whatsnew.games/.env'),
@@ -35,15 +36,19 @@ const client = new ApifyClient({
   token: file.token,
 });
 
-const schedules = await client.schedules().list();
-const schedule = schedules.items.find((s) => s.name === scheduleName);
+const allSchedules = await client.schedules().list();
+const schedules = allSchedules.items.filter((s) => s.name.startsWith(scheduleName));
 
-if (!schedule) {
-  throw new Error(`Missing schedule ${scheduleName}`);
+if (schedules.length === 0) {
+  throw new Error(`Missing schedules ${scheduleName}*`);
 }
 
 const actorsWithSchedule = new Set(
-  schedule.actions.filter((a): a is ScheduleActionRunActor => 'actorId' in a).map((a) => a.actorId),
+  schedules
+    .map((s) => s.actions)
+    .flat(1)
+    .filter((a): a is ScheduleActionRunActor => 'actorId' in a)
+    .map((a) => a.actorId),
 );
 const actors = await client.actors().list();
 const actorsWithMissingWebhook: ActorCollectionListItem[] = [];
@@ -94,9 +99,18 @@ if (actorsWithMissingWebhook.length || actorsWithMissingSchedule.length) {
     });
   }
   if (actorsWithMissingSchedule.length) {
-    await client.schedule(schedule.id).update({
-      actions: schedule.actions.concat(
-        actorsWithMissingSchedule.map(
+    const schedule = schedules.find((s) => s.actions.length < 10);
+
+    // all schedules are full, so we create a new one
+    if (!schedule) {
+      await client.schedules().create({
+        title: `Daily ${schedules.length + 1}`,
+        name: `daily-scans-${schedules.length + 1}`,
+        timezone: 'UTC',
+        cronExpression: '@daily',
+        isEnabled: true,
+        isExclusive: true,
+        actions: actorsWithMissingSchedule.map(
           (a) =>
             ({
               type: ScheduleActions.RunActor,
@@ -104,8 +118,22 @@ if (actorsWithMissingWebhook.length || actorsWithMissingSchedule.length) {
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
             } as any),
         ),
-      ),
-    });
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      } as any);
+    } else {
+      await client.schedule(schedule.id).update({
+        actions: schedule.actions.concat(
+          actorsWithMissingSchedule.map(
+            (a) =>
+              ({
+                type: ScheduleActions.RunActor,
+                actorId: a.id,
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              } as any),
+          ),
+        ),
+      });
+    }
   }
 } else {
   console.log('All actors have an active webhook and schedule in production');
