@@ -1,0 +1,11 @@
+{
+  "name": "fall-guys",
+  "version": "0.1",
+  "buildTag": "latest",
+  "env": {
+    "FOLDER": "fall-guys",
+    "APIFY_DEFAULT_DATASET_ID": "fall-guys",
+    "APIFY_DEFAULT_REQUEST_QUEUE_ID": "fall-guys"
+  },
+  "template": "project_cheerio_crawler_ts"
+}

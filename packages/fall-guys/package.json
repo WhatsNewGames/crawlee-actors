@@ -1,35 +1,35 @@
 {
-  "name": "@wng/common",
+  "name": "@wng/fall-guys",
   "version": "0.0.1",
+  "private": "true",
   "type": "module",
-  "description": "Common dependencies for @wng/ packages",
-  "main": "src/index.ts",
+  "description": "Fall Guys crawler for What's New Games",
   "engines": {
     "node": ">=16.0.0"
   },
+  "config": {
+    "slug": "fall-guys"
+  },
   "dependencies": {
     "apify": "^3.0.2",
-    "@apify/timeout": "^0.3.0",
     "crawlee": "^3.0.4",
-    "fecha": "^4.2.3",
-    "sanitize-html": "^2.7.2"
+    "jsdom": "^20.0.0",
+    "@wng/common": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^16.11.65",
-    "@types/sanitize-html": "^2.6.2",
+    "esno": "^0.16.3",
+    "tsup": "^6.2.3",
     "typescript": "^4.8.4"
   },
-  "exports": {
-    ".": {
-      "default": "./src/index.ts"
-    },
-    "./riot": {
-      "default": "./src/riot/index.ts"
-    }
-  },
   "scripts": {
+    "start": "pnpm run start:dev",
+    "start:prod": "node dist/main.js",
+    "start:dev": "esno src/main.ts",
+    "build": "tsup",
     "lint": "prettier --check ./src",
     "lint:fix": "prettier --write ./src",
+    "apify:push": "../../apify-push.sh fall-guys",
     "test": "echo \"Error: oops, the actor has no tests yet, sad!\" && exit 1"
   },
   "author": "Joël Charles",
