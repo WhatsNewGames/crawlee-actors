@@ -18,32 +18,43 @@ router.addDefaultHandler(async ({ enqueueLinks, request, $, log }) => {
     },
   });
 
-  let { url, loadedUrl } = request;
-  url = loadedUrl ?? url;
+  let { url } = request;
+  url = request.loadedUrl ?? url;
 
-  const title = $('.PatchNotes-patchTitle').text();
-  const date = $('.PatchNotes-date').text();
-  const content = $('.PatchNotes-section')
-    .map(function () {
-      return $(this).html();
-    })
-    .toArray()
-    .join('');
+  const promises: Promise<unknown>[] = [];
 
-  if (!content) {
-    log.error('Page scraped but selector returned empty result', {
-      url,
-      title,
-    });
-    return;
-  }
+  $('.PatchNotes-patch').each(function () {
+    const anchor = $('.anchor', this).first().attr('id');
+    const title = $('.PatchNotes-patchTitle', this).text();
+    const date = $('.PatchNotes-date', this).text();
+    const content = $('.PatchNotes-section', this)
+      .map(function () {
+        return $(this).html();
+      })
+      .toArray()
+      .join('');
 
-  log.info('Page scraped', { url, title, date });
+    const innerUrl = url + '#' + anchor;
 
-  await pushData({
-    url,
-    date: { date, format: 'MMMM Do YYYY' },
-    title,
-    content,
+    if (!content) {
+      log.error('Page scraped but selector returned empty result', {
+        url: innerUrl,
+        title,
+      });
+      return;
+    }
+
+    log.info('Page scraped', { url: innerUrl, title, date });
+
+    promises.push(
+      pushData({
+        url: innerUrl,
+        date: { date, format: 'MMMM Do YYYY' },
+        title,
+        content,
+      }),
+    );
   });
+
+  await Promise.all(promises);
 });
