@@ -1,0 +1,11 @@
+{
+  "name": "no-man-s-sky",
+  "version": "0.1",
+  "buildTag": "latest",
+  "env": {
+    "FOLDER": "no-man-s-sky",
+    "APIFY_DEFAULT_DATASET_ID": "no-man-s-sky",
+    "APIFY_DEFAULT_REQUEST_QUEUE_ID": "no-man-s-sky"
+  },
+  "template": "project_cheerio_crawler_ts"
+}

@@ -49,15 +49,15 @@ importers:
       '@apify/timeout': ^0.3.0
       '@types/node': ^16.11.65
       '@types/sanitize-html': ^2.6.2
-      apify: ^3.0.2
-      crawlee: ^3.0.4
+      apify: ^3.1.0
+      crawlee: ^3.1.1
       fecha: ^4.2.3
       sanitize-html: ^2.7.2
       typescript: ^4.8.4
     dependencies:
       '@apify/timeout': 0.3.0
-      apify: 3.0.2
-      crawlee: 3.0.4
+      apify: 3.1.0
+      crawlee: 3.1.1
       fecha: 4.2.3
       sanitize-html: 2.7.2
     devDependencies:
@@ -200,6 +200,25 @@ importers:
       tsup: 6.2.3_typescript@4.8.4
       typescript: 4.8.4
 
+  packages/no-man-s-sky:
+    specifiers:
+      '@types/node': ^16.11.65
+      '@wng/common': workspace:*
+      apify: ^3.0.2
+      crawlee: ^3.0.4
+      esno: ^0.16.3
+      tsup: ^6.2.3
+      typescript: ^4.8.4
+    dependencies:
+      '@wng/common': link:../common
+      apify: 3.0.2
+      crawlee: 3.0.4
+    devDependencies:
+      '@types/node': 16.11.65
+      esno: 0.16.3
+      tsup: 6.2.3_typescript@4.8.4
+      typescript: 4.8.4
+
   packages/overwatch-2:
     specifiers:
       '@types/node': ^16.11.65
@@ -322,8 +341,20 @@ packages:
   /@apify/consts/2.4.1:
     resolution: {integrity: sha512-8aNmkmcOfFLPpD/h+WW3p3TVEJ6Zoks9yTWEYFmKxHf9UfSFU7cN07uoXYweEmUvt7sEj7XhoPfRG+EDsekBKA==}
 
+  /@apify/consts/2.5.0:
+    resolution: {integrity: sha512-QQuQq+lYBcQGvDg1DYTNqkh7YKRJdqeHYQ/b9+dlQW/ZNIf61ncx8n92DRIyv+nBe/vMT0YRNojuDLUlJTlnMQ==}
+    dev: false
+
   /@apify/datastructures/2.0.0:
     resolution: {integrity: sha512-O7I31PvG4Qb/Zc2lAIkSUBRDLKDKLrmqtWG3Ea8To5xvbPKdiLuVx3IuAzjCs1UQVTbhN590Sw5xBoFghreAYA==}
+    dev: false
+
+  /@apify/input_secrets/1.1.2:
+    resolution: {integrity: sha512-BJo7P7tlCSLlForcWvkh9yxdLFgSQmAj3UGZynmnDN73fe3ZXInLW496TGSvI3kI6OhmSsGHlp5cS5r56PQelw==}
+    dependencies:
+      '@apify/log': 2.2.2
+      '@apify/utilities': 2.2.4
+      ow: 0.28.2
     dev: false
 
   /@apify/log/2.2.1:
@@ -331,6 +362,13 @@ packages:
     dependencies:
       '@apify/consts': 2.4.1
       ansi-colors: 4.1.3
+
+  /@apify/log/2.2.2:
+    resolution: {integrity: sha512-Zo6XxWDsdF7H4hI0lkGl62SvoWMnxLmKz9VED1qA/8S13C+IDu2siIgtGFOZAU0YdI7yXr6N5cDnPCPcgfp20Q==}
+    dependencies:
+      '@apify/consts': 2.5.0
+      ansi-colors: 4.1.3
+    dev: false
 
   /@apify/ps-tree/1.1.4:
     resolution: {integrity: sha512-zUMjF8hO82Wg4+NHW+plQZ/HSPqAeYt0Ejo8t28hShAMYRbIpLjdAh3Nts1PL1+3YdxlY9BxHvUCY+hXbxWYRg==}
@@ -360,6 +398,13 @@ packages:
     dependencies:
       '@apify/consts': 2.4.1
       '@apify/log': 2.2.1
+    dev: false
+
+  /@apify/utilities/2.2.4:
+    resolution: {integrity: sha512-nayDj5SoZihSuXqwneAQTmQheWS3arnI9EVMHprdzx1MAUXXbiRwK4nXikr2BIdof2B04eVhU/X8bKaUhV5dbw==}
+    dependencies:
+      '@apify/consts': 2.5.0
+      '@apify/log': 2.2.2
     dev: false
 
   /@babel/code-frame/7.18.6:
@@ -397,6 +442,21 @@ packages:
       ow: 0.28.2
     dev: false
 
+  /@crawlee/basic/3.1.1:
+    resolution: {integrity: sha512-gcPINkfjY97EMOhKhwFwYeyU3ROvUI2judbSU31OH1sJwDs2NUtp+hE2FWnK7KiQkFWTH8Pug8Ty7zU472gArw==}
+    engines: {node: '>=16.0.0'}
+    dependencies:
+      '@apify/log': 2.2.2
+      '@apify/timeout': 0.3.0
+      '@apify/utilities': 2.2.4
+      '@crawlee/core': 3.1.1
+      '@crawlee/types': 3.1.1
+      '@crawlee/utils': 3.1.1
+      got-scraping: 3.2.11
+      ow: 0.28.2
+      type-fest: 3.2.0
+    dev: false
+
   /@crawlee/browser-pool/3.0.4:
     resolution: {integrity: sha512-w73ZHGdxO3aepXf1LGIPmttdEk+9A9psOjQGAKdKr2EGTZxRucfE3cd7vN7t8fkVm70V3MMY6tRammkwzAKItw==}
     engines: {node: '>=16.0.0'}
@@ -412,6 +472,33 @@ packages:
       '@apify/log': 2.2.1
       '@apify/timeout': 0.3.0
       '@crawlee/types': 3.0.4
+      fingerprint-generator: 2.1.1
+      fingerprint-injector: 2.1.1
+      lodash.merge: 4.6.2
+      nanoid: 3.3.4
+      ow: 0.28.2
+      p-limit: 3.1.0
+      proxy-chain: 2.1.0
+      quick-lru: 5.1.1
+      tiny-typed-emitter: 2.1.0
+      tslib: 2.4.0
+    dev: false
+
+  /@crawlee/browser-pool/3.1.1:
+    resolution: {integrity: sha512-say6acLlXAJuH3yP55ZY5T6eApEmg2uthMxDKMQEp4cDrO8F0E+zdx/6kBDzAqy4/atxmHBtHG0d5pgWGr2dvg==}
+    engines: {node: '>=16.0.0'}
+    peerDependencies:
+      playwright: ^1.21.1
+      puppeteer: <= 19.x
+    peerDependenciesMeta:
+      playwright:
+        optional: true
+      puppeteer:
+        optional: true
+    dependencies:
+      '@apify/log': 2.2.2
+      '@apify/timeout': 0.3.0
+      '@crawlee/types': 3.1.1
       fingerprint-generator: 2.1.1
       fingerprint-injector: 2.1.1
       lodash.merge: 4.6.2
@@ -440,6 +527,21 @@ packages:
       - puppeteer
     dev: false
 
+  /@crawlee/browser/3.1.1:
+    resolution: {integrity: sha512-GAXahjBMNQ9opMJsobKyoq/ySr7/3JaNToljU6XKAmtpksw0HLyS21c3VZGqOmRdQXoAVOkfY9GjgsXNr8zlOg==}
+    engines: {node: '>=16.0.0'}
+    dependencies:
+      '@apify/timeout': 0.3.0
+      '@crawlee/basic': 3.1.1
+      '@crawlee/browser-pool': 3.1.1
+      '@crawlee/types': 3.1.1
+      '@crawlee/utils': 3.1.1
+      ow: 0.28.2
+    transitivePeerDependencies:
+      - playwright
+      - puppeteer
+    dev: false
+
   /@crawlee/cheerio/3.0.4:
     resolution: {integrity: sha512-vySe5CQogIZapsI4qiYoU7xA4+CobWOksYNctjJHyvFLoxDcJv44BesmTzKIetgZapJkMsljN+QxspN53SXiKQ==}
     engines: {node: '>=16.0.0'}
@@ -450,12 +552,35 @@ packages:
       htmlparser2: 8.0.1
     dev: false
 
+  /@crawlee/cheerio/3.1.1:
+    resolution: {integrity: sha512-AVJ7MzLwUZT8dckkC8NsKTFU4LsKGf0PLleDGEfJ2YWKx3D7ELkAzUrQMaXHWw0Iy/IjTGmih5LF06ir77X2Fg==}
+    engines: {node: '>=16.0.0'}
+    dependencies:
+      '@crawlee/http': 3.1.1
+      '@crawlee/types': 3.1.1
+      cheerio: 1.0.0-rc.12
+      htmlparser2: 8.0.1
+    dev: false
+
   /@crawlee/cli/3.0.4:
     resolution: {integrity: sha512-0aM+xiJVW/fUV4IRT14NIVOQ75Fru/3WpKbAElgY6lE6Kxh5eVtca5VkHewfui6uvnCW244xjleWkWW6Wb+7Ew==}
     engines: {node: '>=16.0.0'}
     hasBin: true
     dependencies:
       '@crawlee/templates': 3.0.4
+      ansi-colors: 4.1.3
+      fs-extra: 10.1.0
+      inquirer: 8.2.4
+      yargonaut: 1.1.4
+      yargs: 17.6.0
+    dev: false
+
+  /@crawlee/cli/3.1.1:
+    resolution: {integrity: sha512-jdrEX1eEe7tFw5d3A32A5/Fk1iQXjWzXIAtxAxi4s5twHaWeo/YnXCEspKEMGu3kQ9hFQcR2CFzdA6dc5V1waA==}
+    engines: {node: '>=16.0.0'}
+    hasBin: true
+    dependencies:
+      '@crawlee/templates': 3.1.1
       ansi-colors: 4.1.3
       fs-extra: 10.1.0
       inquirer: 8.2.4
@@ -487,6 +612,33 @@ packages:
       tough-cookie: 4.1.2
     dev: false
 
+  /@crawlee/core/3.1.1:
+    resolution: {integrity: sha512-sYaK4Qvp6WD1D50/gwERulRw/oDm9fOA427GzEfPdP1R+FWZhCgZ3ID5V7HWdxj61n0Wr8vihAA5ZdiD6EPL1g==}
+    engines: {node: '>=16.0.0'}
+    dependencies:
+      '@apify/consts': 2.4.1
+      '@apify/datastructures': 2.0.0
+      '@apify/log': 2.2.1
+      '@apify/pseudo_url': 2.0.7
+      '@apify/timeout': 0.3.0
+      '@apify/utilities': 2.2.3
+      '@crawlee/memory-storage': 3.1.1
+      '@crawlee/types': 3.1.1
+      '@crawlee/utils': 3.1.1
+      '@types/tough-cookie': 4.0.2
+      '@vladfrangu/async_event_emitter': 2.1.2
+      csv-stringify: 6.2.0
+      fs-extra: 10.1.0
+      json5: 2.2.1
+      minimatch: 5.1.0
+      ow: 0.28.2
+      stream-chain: 2.2.5
+      stream-json: 1.7.4
+      tldts: 5.7.94
+      tough-cookie: 4.1.2
+      type-fest: 3.2.0
+    dev: false
+
   /@crawlee/http/3.0.4:
     resolution: {integrity: sha512-ARy4/N/zIwqj7+0ZOaPJDwS/JhErXSjm6WLjz2Heyk7bErl6HYiwx1jPNMvHp98wpCRMkf8LtoeWx9yBqwPevQ==}
     engines: {node: '>=16.0.0'}
@@ -503,6 +655,23 @@ packages:
       ow: 0.28.2
     dev: false
 
+  /@crawlee/http/3.1.1:
+    resolution: {integrity: sha512-UDC8ymRSIxROmAlN1GMKPprZ6EkNj4iKqq4lydV3VsPc3dgPsPDVZIQCf1yAbi2t5vJBsAlnua5sqfR7tp8Ung==}
+    engines: {node: '>=16.0.0'}
+    dependencies:
+      '@apify/timeout': 0.3.0
+      '@apify/utilities': 2.2.4
+      '@crawlee/basic': 3.1.1
+      '@crawlee/types': 3.1.1
+      '@types/content-type': 1.1.5
+      content-type: 1.0.4
+      got-scraping: 3.2.11
+      iconv-lite: 0.6.3
+      mime-types: 2.1.35
+      ow: 0.28.2
+      type-fest: 3.2.0
+    dev: false
+
   /@crawlee/jsdom/3.0.4:
     resolution: {integrity: sha512-QMoXJmcBSPU6dD+8QtiwFyJnmYXFdfsFlJYc4jA7N32Dl/JPMZILTZ5gfzbhxVMZJP/lVyk/AOUdiDzWxh4XMg==}
     engines: {node: '>=16.0.0'}
@@ -510,6 +679,22 @@ packages:
       '@apify/utilities': 2.2.3
       '@crawlee/http': 3.0.4
       '@crawlee/types': 3.0.4
+      '@types/jsdom': 20.0.0
+      jsdom: 20.0.1
+    transitivePeerDependencies:
+      - bufferutil
+      - canvas
+      - supports-color
+      - utf-8-validate
+    dev: false
+
+  /@crawlee/jsdom/3.1.1:
+    resolution: {integrity: sha512-l94vFSGjzpGUmW3GgQokxM+9CkSYWwQCQp2fbliB+nMJ5nr6cGTNuar5PtyPWKUE8fd0WmJPm+11ZwnBbSGDlw==}
+    engines: {node: '>=16.0.0'}
+    dependencies:
+      '@apify/utilities': 2.2.4
+      '@crawlee/http': 3.1.1
+      '@crawlee/types': 3.1.1
       '@types/jsdom': 20.0.0
       jsdom: 20.0.1
     transitivePeerDependencies:
@@ -534,6 +719,22 @@ packages:
       tslib: 2.4.0
     dev: false
 
+  /@crawlee/memory-storage/3.1.1:
+    resolution: {integrity: sha512-kiXvF8zVf0ncvkdSsAs+WpQplPaBF7fy5k+us5Pa6YgTm2FekuHuhIZFGKlPmBBQ5wQ6PVqgiVg0pVH+IpOXXw==}
+    engines: {node: '>= 16'}
+    dependencies:
+      '@apify/log': 2.2.2
+      '@crawlee/types': 3.1.1
+      '@crawlee/utils': 3.1.1
+      '@sapphire/shapeshift': 3.7.0
+      content-type: 1.0.4
+      fs-extra: 10.1.0
+      json5: 2.2.1
+      mime-types: 2.1.35
+      proper-lockfile: 4.1.2
+      tslib: 2.4.0
+    dev: false
+
   /@crawlee/playwright/3.0.4:
     resolution: {integrity: sha512-aQPX9TmUGR2yQ6DhKRousZ3QGf9+XGbfKfXKq6PM1IpGD/Je8A/R8EVKXQmePx6mSm++U6dpdM5FnUUSiHo/Nw==}
     engines: {node: '>=16.0.0'}
@@ -549,6 +750,28 @@ packages:
       '@crawlee/browser-pool': 3.0.4
       '@crawlee/core': 3.0.4
       '@crawlee/utils': 3.0.4
+      cheerio: 1.0.0-rc.12
+      jquery: 3.6.1
+      ow: 0.28.2
+    transitivePeerDependencies:
+      - puppeteer
+    dev: false
+
+  /@crawlee/playwright/3.1.1:
+    resolution: {integrity: sha512-yF7qMMd+tDeHBgr3tz5dOAq0EwTWhip1H3Mr4wxsOUhgIkNef1f/zKDHUK+1M6ZyyiFThTDa5fMU8rwWYyTtVg==}
+    engines: {node: '>=16.0.0'}
+    peerDependencies:
+      playwright: ^1.21.1
+    peerDependenciesMeta:
+      playwright:
+        optional: true
+    dependencies:
+      '@apify/datastructures': 2.0.0
+      '@apify/log': 2.2.2
+      '@crawlee/browser': 3.1.1
+      '@crawlee/browser-pool': 3.1.1
+      '@crawlee/types': 3.1.1
+      '@crawlee/utils': 3.1.1
       cheerio: 1.0.0-rc.12
       jquery: 3.6.1
       ow: 0.28.2
@@ -578,8 +801,41 @@ packages:
       - playwright
     dev: false
 
+  /@crawlee/puppeteer/3.1.1:
+    resolution: {integrity: sha512-fy48Xvx0gt47baip+8VpLcCtPuBO6DFWcsWXt03Wh/A1V/Xx7w7CBQN3FBeMYh21IEdYujYqm8uTZacmUg5OCw==}
+    engines: {node: '>=16.0.0'}
+    peerDependencies:
+      puppeteer: <= 19.x
+    peerDependenciesMeta:
+      puppeteer:
+        optional: true
+    dependencies:
+      '@apify/datastructures': 2.0.0
+      '@apify/log': 2.2.2
+      '@crawlee/browser': 3.1.1
+      '@crawlee/browser-pool': 3.1.1
+      '@crawlee/types': 3.1.1
+      '@crawlee/utils': 3.1.1
+      cheerio: 1.0.0-rc.12
+      devtools-protocol: 0.0.1068494
+      jquery: 3.6.1
+      ow: 0.28.2
+    transitivePeerDependencies:
+      - playwright
+    dev: false
+
   /@crawlee/templates/3.0.4:
     resolution: {integrity: sha512-yiH+2gZEbrWu16AHIpeRgW/eqR6AsufHaL5PEFdFRm/9Y10j0zhaljpyjqGoDUoSy5GfNbpAEElyBgD+jcs/UQ==}
+    engines: {node: '>=16.0.0'}
+    dependencies:
+      ansi-colors: 4.1.3
+      inquirer: 9.1.3
+      yargonaut: 1.1.4
+      yargs: 17.6.0
+    dev: false
+
+  /@crawlee/templates/3.1.1:
+    resolution: {integrity: sha512-pmRbxWpZpc+8XL8vB8uiTp3EMd+TvC/dVcmcd5GgaYLPRzgv2+g85Dh4YdgBQB0/LcYwkFgotPi/t/+M8cb3Cg==}
     engines: {node: '>=16.0.0'}
     dependencies:
       ansi-colors: 4.1.3
@@ -595,6 +851,13 @@ packages:
       tslib: 2.4.0
     dev: false
 
+  /@crawlee/types/3.1.1:
+    resolution: {integrity: sha512-04Tp0JNc6B2djL6B4+oliCat1kzdxz2K+TcC53GQpM8hKNbnqKHmRH7nunenlTun6xuEGAV/zkuejRHayImHfw==}
+    engines: {node: '>=16.0.0'}
+    dependencies:
+      tslib: 2.4.0
+    dev: false
+
   /@crawlee/utils/3.0.4:
     resolution: {integrity: sha512-FVINy98R58gqsEVmIJWBxaH5lKi8nXLgZTKqwbe2ASGq/xEJj7ixlmSE1stPdxATc1m3ah6nKr/otT/wTkWw2g==}
     engines: {node: '>=16.0.0'}
@@ -602,6 +865,18 @@ packages:
       '@apify/log': 2.2.1
       '@apify/ps-tree': 1.1.4
       '@crawlee/types': 3.0.4
+      cheerio: 1.0.0-rc.12
+      got-scraping: 3.2.11
+      tslib: 2.4.0
+    dev: false
+
+  /@crawlee/utils/3.1.1:
+    resolution: {integrity: sha512-nSmDw9knUf3ddr+XF483kNn0myFN0eCTNnHi960eTaXVj7zME1APHw9RWrWxWkzSJ3HaevFZ5zM9Nw8843XZFA==}
+    engines: {node: '>=16.0.0'}
+    dependencies:
+      '@apify/log': 2.2.2
+      '@apify/ps-tree': 1.1.4
+      '@crawlee/types': 3.1.1
       cheerio: 1.0.0-rc.12
       got-scraping: 3.2.11
       tslib: 2.4.0
@@ -1107,6 +1382,29 @@ packages:
       - utf-8-validate
     dev: false
 
+  /apify/3.1.0:
+    resolution: {integrity: sha512-VJGvcJUaoSOc37ZYAQcwTTlTOCjEG+XtvQeJ3WSR7v7msCDf33Gb6L2COeqfnszBg9SjymkqQDTmc9P9sWeFuw==}
+    engines: {node: '>=16.0.0'}
+    dependencies:
+      '@apify/consts': 2.4.1
+      '@apify/input_secrets': 1.1.2
+      '@apify/log': 2.2.1
+      '@apify/timeout': 0.3.0
+      '@apify/utilities': 2.2.3
+      '@crawlee/core': 3.1.1
+      '@crawlee/types': 3.1.1
+      '@crawlee/utils': 3.1.1
+      apify-client: 2.6.0
+      ow: 0.28.2
+      semver: 7.3.8
+      ws: 7.5.9
+    transitivePeerDependencies:
+      - bufferutil
+      - debug
+      - supports-color
+      - utf-8-validate
+    dev: false
+
   /argparse/2.0.1:
     resolution: {integrity: sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==}
     dev: true
@@ -1500,6 +1798,37 @@ packages:
       - utf-8-validate
     dev: false
 
+  /crawlee/3.1.1:
+    resolution: {integrity: sha512-yi4pIkmLoqPzcP1zHOT1uI6TKdtD5kflXUVW1fAI1iKl1bBjMidF3I4+ZWA/QWZRNCxe7BZbJkVsq1Zxc6A9uA==}
+    engines: {node: '>=16.0.0'}
+    hasBin: true
+    peerDependencies:
+      playwright: ^1.21.1
+      puppeteer: <= 19.x
+    peerDependenciesMeta:
+      playwright:
+        optional: true
+      puppeteer:
+        optional: true
+    dependencies:
+      '@crawlee/basic': 3.1.1
+      '@crawlee/browser': 3.1.1
+      '@crawlee/cheerio': 3.1.1
+      '@crawlee/cli': 3.1.1
+      '@crawlee/core': 3.1.1
+      '@crawlee/http': 3.1.1
+      '@crawlee/jsdom': 3.1.1
+      '@crawlee/playwright': 3.1.1
+      '@crawlee/puppeteer': 3.1.1
+      '@crawlee/utils': 3.1.1
+      import-local: 3.1.0
+    transitivePeerDependencies:
+      - bufferutil
+      - canvas
+      - supports-color
+      - utf-8-validate
+    dev: false
+
   /cross-spawn/7.0.3:
     resolution: {integrity: sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==}
     engines: {node: '>= 8'}
@@ -1537,6 +1866,10 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       cssom: 0.3.8
+    dev: false
+
+  /csv-stringify/6.2.0:
+    resolution: {integrity: sha512-dcUbQLRTTDcgQxgEU8V9IctkaCwHZjZfzUZ5ZB3RY8Y+pXtdtl5iVQHfGzANytFFkRKanYzBXrkfpNdGR7eviA==}
     dev: false
 
   /data-urls/3.0.2:
@@ -1614,6 +1947,10 @@ packages:
   /depd/1.1.2:
     resolution: {integrity: sha512-7emPTl6Dpo6JRXOXjLRxck+FlLRX5847cLKEn00PLAgc3g2hTZZgr+e4c2v6QpSmLeFP3n5yUo7ft6avBK/5jQ==}
     engines: {node: '>= 0.6'}
+
+  /devtools-protocol/0.0.1068494:
+    resolution: {integrity: sha512-qCtQTrNWj3kUx00NJnUDtYvN2cnFxCoTRwlbCdcxEdgStf3AjsIV+sYk7z8FV58ADcqC1Duv5RIW79xjShCthw==}
+    dev: false
 
   /dir-glob/3.0.1:
     resolution: {integrity: sha512-WkrWp9GR4KXfKGYzOLmTuGVi1UWFfws377n9cc55/tb6DuqyF6pcQ5AbiHEshaDpY9v6oaSr2XCDidGmMwdzIA==}
@@ -2861,6 +3198,12 @@ packages:
   /json-stable-stringify-without-jsonify/1.0.1:
     resolution: {integrity: sha512-Bdboy+l7tA3OGW6FjyFHWkP5LuByj1Tk33Ljyq0axyzdk9//JSi2u3fP1QSmd1KNwq6VOKYGlAu87CisVir6Pw==}
     dev: true
+
+  /json5/2.2.1:
+    resolution: {integrity: sha512-1hqLFMSrGHRHxav9q9gNjJ5EXznIxGVO09xQRrwplcS8qs28pZ8s8hupZAmqDwZUmVZ2Qb2jnyPOWcDH8m8dlA==}
+    engines: {node: '>=6'}
+    hasBin: true
+    dev: false
 
   /jsonfile/6.1.0:
     resolution: {integrity: sha512-5dgndWOriYSm5cnYaJNhalLNDKOqFwyDB/rr1E9ZsGciGvKPs8R2xYGCacuf3z6K1YKDz182fd+fY3cn3pMqXQ==}
@@ -4111,6 +4454,11 @@ packages:
   /type-fest/1.4.0:
     resolution: {integrity: sha512-yGSza74xk0UG8k+pLh5oeoYirvIiWo5t0/o3zHHAO2tRDiZcxWP7fywNlXhqb6/r6sWvwi+RsyQMWhVLe4BVuA==}
     engines: {node: '>=10'}
+
+  /type-fest/3.2.0:
+    resolution: {integrity: sha512-Il3wdLRzWvbAEtocgxGQA9YOoRVeVUGOMBtel5LdEpNeEAol6GJTLw8GbX6Z8EIMfvfhoOXs2bwOijtAZdK5og==}
+    engines: {node: '>=14.16'}
+    dev: false
 
   /typescript/4.8.4:
     resolution: {integrity: sha512-QCh+85mCy+h0IGff8r5XWzOVSbBO+KfeYrMQh7NJ58QujwcE22u+NUSmUxqF+un70P9GXKxa2HCNiTTMJknyjQ==}
