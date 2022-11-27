@@ -5,7 +5,6 @@ import { join } from 'path';
 import inquirer from 'inquirer';
 import { exit } from 'process';
 import * as dotenv from 'dotenv';
-import { ApifyApiError } from 'apify-client/dist/apify_api_error.js';
 
 dotenv.config({
   path: join(homedir(), 'workspace/whatsnew.games/.env'),
@@ -14,6 +13,9 @@ dotenv.config({
 if (!process.env.API_SECRET_KEY) {
   throw new Error('Cannot read API_SECRET_KEY');
 }
+
+// 4096MB max at a given time, 512MB each. (Apify hard limit can be up set to 10 max)
+const MAX_TAKS_PER_SCHEDULE = 8;
 
 const requestUrl = 'https://whatsnew.games/api/apify/webhook';
 const scheduleName = 'daily-scans';
@@ -99,7 +101,7 @@ if (actorsWithMissingWebhook.length || actorsWithMissingSchedule.length) {
     });
   }
   if (actorsWithMissingSchedule.length) {
-    const schedule = schedules.find((s) => s.actions.length < 10);
+    const schedule = schedules.find((s) => s.actions.length < MAX_TAKS_PER_SCHEDULE);
 
     // all schedules are full, so we create a new one
     if (!schedule) {
