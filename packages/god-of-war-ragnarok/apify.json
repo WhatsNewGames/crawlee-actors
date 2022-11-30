@@ -1,0 +1,11 @@
+{
+  "name": "god-of-war-ragnarok",
+  "version": "0.1",
+  "buildTag": "latest",
+  "env": {
+    "FOLDER": "god-of-war-ragnarok",
+    "APIFY_DEFAULT_DATASET_ID": "god-of-war-ragnarok",
+    "APIFY_DEFAULT_REQUEST_QUEUE_ID": "god-of-war-ragnarok"
+  },
+  "template": "project_cheerio_crawler_ts"
+}
