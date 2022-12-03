@@ -74,6 +74,11 @@ for (const actor of actors.items) {
   }
 }
 
+if (schedules.some((s) => s.actions.length > MAX_TAKS_PER_SCHEDULE)) {
+  // yellow color
+  console.warn('\x1b[33m%s\x1b[0m', `Some schedules have more than ${MAX_TAKS_PER_SCHEDULE} actions.`);
+}
+
 if (actorsWithMissingWebhook.length || actorsWithMissingSchedule.length) {
   console.log('Webhook/Schedules missing for the following actors:');
   actorsWithMissingWebhook.map((s) => '\twebhook: ' + s.name).forEach((s) => console.log(s));
@@ -100,6 +105,7 @@ if (actorsWithMissingWebhook.length || actorsWithMissingSchedule.length) {
       payloadTemplate,
     });
   }
+
   if (actorsWithMissingSchedule.length) {
     const schedule = schedules.find((s) => s.actions.length < MAX_TAKS_PER_SCHEDULE);
 
