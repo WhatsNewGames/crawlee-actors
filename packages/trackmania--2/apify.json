@@ -1,0 +1,11 @@
+{
+  "name": "trackmania--2",
+  "version": "0.1",
+  "buildTag": "latest",
+  "env": {
+    "FOLDER": "trackmania--2",
+    "APIFY_DEFAULT_DATASET_ID": "trackmania--2",
+    "APIFY_DEFAULT_REQUEST_QUEUE_ID": "trackmania--2"
+  },
+  "template": "project_cheerio_crawler_ts"
+}
