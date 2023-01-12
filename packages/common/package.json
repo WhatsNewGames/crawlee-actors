@@ -8,17 +8,17 @@
     "node": ">=16.0.0"
   },
   "dependencies": {
-    "apify": "^3.1.1",
     "@apify/timeout": "^0.3.0",
-    "cheerio": "^1.0.0-rc.12",
-    "crawlee": "^3.1.2",
+    "apify": "^3.1.1",
+    "cheerio": "1.0.0-rc.12",
+    "crawlee": "^3.1.4",
     "fecha": "^4.2.3",
-    "sanitize-html": "^2.7.3"
+    "sanitize-html": "^2.8.1"
   },
   "devDependencies": {
-    "@types/node": "^16.11.65",
-    "@types/sanitize-html": "^2.6.2",
-    "typescript": "^4.9.3"
+    "@types/node": "^16.18.11",
+    "@types/sanitize-html": "^2.8.0",
+    "typescript": "^4.9.4"
   },
   "exports": {
     ".": {

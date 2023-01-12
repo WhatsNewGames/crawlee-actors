@@ -11,15 +11,15 @@
     "slug": "pokemon-scarlet"
   },
   "dependencies": {
+    "@wng/common": "workspace:*",
     "apify": "^3.1.1",
-    "crawlee": "^3.1.2",
-    "@wng/common": "workspace:*"
+    "crawlee": "^3.1.4"
   },
   "devDependencies": {
-    "@types/node": "^16.11.65",
+    "@types/node": "^16.18.11",
     "esno": "^0.16.3",
     "tsup": "^6.5.0",
-    "typescript": "^4.9.3"
+    "typescript": "^4.9.4"
   },
   "scripts": {
     "start": "pnpm run start:dev",
