@@ -1,11 +1,11 @@
 {
-  "name": "pokemon-violet",
-  "version": "0.1",
-  "buildTag": "latest",
-  "env": {
+  "actorSpecification": 1,
+  "environmentVariables": {
     "FOLDER": "pokemon-violet",
     "APIFY_DEFAULT_DATASET_ID": "pokemon-violet",
     "APIFY_DEFAULT_REQUEST_QUEUE_ID": "pokemon-violet"
   },
-  "template": "project_cheerio_crawler_ts"
+  "name": "pokemon-violet",
+  "version": "0.1",
+  "buildTag": "latest"
 }

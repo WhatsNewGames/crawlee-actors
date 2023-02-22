@@ -1,11 +1,11 @@
 {
-  "name": "rocket-league",
-  "version": "0.1",
-  "buildTag": "latest",
-  "env": {
+  "actorSpecification": 1,
+  "environmentVariables": {
     "FOLDER": "rocket-league",
     "APIFY_DEFAULT_DATASET_ID": "rocket-league",
     "APIFY_DEFAULT_REQUEST_QUEUE_ID": "rocket-league"
   },
-  "template": "project_cheerio_crawler_ts"
+  "name": "rocket-league",
+  "version": "0.1",
+  "buildTag": "latest"
 }

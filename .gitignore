@@ -16,6 +16,6 @@ tsconfig.tsbuildinfo
 /packages/*/storage
 
 # Those are symlinked/copied before building the image
-/apify.json
+/.actor
 /INPUT_SCHEMA.json
-/Dockerfile
+/.Dockerfile

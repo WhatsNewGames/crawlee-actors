@@ -1,11 +1,11 @@
 {
-  "name": "minecraft",
-  "version": "0.1",
-  "buildTag": "latest",
-  "env": {
+  "actorSpecification": 1,
+  "environmentVariables": {
     "FOLDER": "minecraft",
     "APIFY_DEFAULT_DATASET_ID": "minecraft",
     "APIFY_DEFAULT_REQUEST_QUEUE_ID": "minecraft"
   },
-  "template": "project_cheerio_crawler_ts"
+  "name": "minecraft",
+  "version": "0.1",
+  "buildTag": "latest"
 }

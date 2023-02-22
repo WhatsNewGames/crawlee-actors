@@ -1,11 +1,11 @@
 {
-  "name": "overwatch-2",
-  "version": "0.1",
-  "buildTag": "latest",
-  "env": {
+  "actorSpecification": 1,
+  "environmentVariables": {
     "FOLDER": "overwatch-2",
     "APIFY_DEFAULT_DATASET_ID": "overwatch-2",
     "APIFY_DEFAULT_REQUEST_QUEUE_ID": "overwatch-2"
   },
-  "template": "project_cheerio_crawler_ts"
+  "name": "overwatch-2",
+  "version": "0.1",
+  "buildTag": "latest"
 }

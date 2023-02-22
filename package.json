@@ -4,14 +4,15 @@
   "private": "true",
   "type": "module",
   "scripts": {
-    "dev:all": "pnpm -r --filter \"./packages/*\" --parallel dev",
-    "build:all": "pnpm -r --filter \"./packages/*\" --parallel build",
+    "dev:all": "pnpm -r dev",
+    "build:all": "pnpm -r build",
     "prepare": "husky install",
     "precommit": "lint-staged",
     "test": "pnpm run build:all && pnpm run -r test",
     "create-actor": "esno ./scripts/create-actor.ts",
     "apify-check-health": "esno ./scripts/apify-check-health.ts",
-    "post-webhook": "esno ./scripts/post-webhook.ts"
+    "post-webhook": "esno ./scripts/post-webhook.ts",
+    "apify:push-all": "pnpm -r --workspace-concurrency 1 apify:push"
   },
   "devDependencies": {
     "@apify/tsconfig": "^0.1.0",

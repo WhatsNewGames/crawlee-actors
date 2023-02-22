@@ -1,11 +1,11 @@
 {
-  "name": "hearthstone",
-  "version": "0.1",
-  "buildTag": "latest",
-  "env": {
+  "actorSpecification": 1,
+  "environmentVariables": {
     "FOLDER": "hearthstone",
     "APIFY_DEFAULT_DATASET_ID": "hearthstone",
     "APIFY_DEFAULT_REQUEST_QUEUE_ID": "hearthstone"
   },
-  "template": "project_cheerio_crawler_ts"
+  "name": "hearthstone",
+  "version": "0.1",
+  "buildTag": "latest"
 }

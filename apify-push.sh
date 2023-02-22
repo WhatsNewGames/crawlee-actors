@@ -11,7 +11,7 @@ pushd $script_dir
 
 pwd
 
-ln -s -f "$script_dir/packages/$FOLDER/apify.json" "$script_dir/apify.json"
+ln -s -f "$script_dir/packages/$FOLDER/.actor" "$script_dir/.actor"
 ln -s -f "$script_dir/packages/$FOLDER/INPUT_SCHEMA.json" "$script_dir/INPUT_SCHEMA.json"
 
 sed "s/{{FOLDER}}/$FOLDER/g" "$script_dir/Dockerfile.template" > "$script_dir/Dockerfile"
@@ -22,7 +22,7 @@ apify push
 
 sed -i "s/\/\.Dockerfile/\/Dockerfile/" "$script_dir/.gitignore"
 rm -f "$script_dir/Dockerfile"
-rm -f "$script_dir/apify.json"
+rm -rf "$script_dir/.actor"
 rm -f "$script_dir/INPUT_SCHEMA.json"
 
 popd

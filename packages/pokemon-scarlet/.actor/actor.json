@@ -1,11 +1,11 @@
 {
-  "name": "pokemon-scarlet",
-  "version": "0.1",
-  "buildTag": "latest",
-  "env": {
+  "actorSpecification": 1,
+  "environmentVariables": {
     "FOLDER": "pokemon-scarlet",
     "APIFY_DEFAULT_DATASET_ID": "pokemon-scarlet",
     "APIFY_DEFAULT_REQUEST_QUEUE_ID": "pokemon-scarlet"
   },
-  "template": "project_cheerio_crawler_ts"
+  "name": "pokemon-scarlet",
+  "version": "0.1",
+  "buildTag": "latest"
 }

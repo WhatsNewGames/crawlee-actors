@@ -1,11 +1,11 @@
 {
-  "name": "star-citizen",
-  "version": "0.1",
-  "buildTag": "latest",
-  "env": {
+  "actorSpecification": 1,
+  "environmentVariables": {
     "FOLDER": "star-citizen",
     "APIFY_DEFAULT_DATASET_ID": "star-citizen",
     "APIFY_DEFAULT_REQUEST_QUEUE_ID": "star-citizen"
   },
-  "template": "project_cheerio_crawler_ts"
+  "name": "star-citizen",
+  "version": "0.1",
+  "buildTag": "latest"
 }

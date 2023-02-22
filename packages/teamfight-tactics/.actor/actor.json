@@ -1,11 +1,11 @@
 {
-  "name": "teamfight-tactics",
-  "version": "0.1",
-  "buildTag": "latest",
-  "env": {
+  "actorSpecification": 1,
+  "environmentVariables": {
     "FOLDER": "teamfight-tactics",
     "APIFY_DEFAULT_DATASET_ID": "teamfight-tactics",
     "APIFY_DEFAULT_REQUEST_QUEUE_ID": "teamfight-tactics"
   },
-  "template": "project_cheerio_crawler_ts"
+  "name": "teamfight-tactics",
+  "version": "0.1",
+  "buildTag": "latest"
 }

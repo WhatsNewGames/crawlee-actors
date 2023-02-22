@@ -1,11 +1,11 @@
 {
-  "name": "fortnite",
-  "version": "0.1",
-  "buildTag": "latest",
-  "env": {
+  "actorSpecification": 1,
+  "environmentVariables": {
     "FOLDER": "fortnite",
     "APIFY_DEFAULT_DATASET_ID": "fortnite",
     "APIFY_DEFAULT_REQUEST_QUEUE_ID": "fortnite"
   },
-  "template": "project_cheerio_crawler_ts"
+  "name": "fortnite",
+  "version": "0.1",
+  "buildTag": "latest"
 }
