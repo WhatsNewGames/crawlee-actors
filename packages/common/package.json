@@ -9,16 +9,16 @@
   },
   "dependencies": {
     "@apify/timeout": "^0.3.0",
-    "apify": "^3.1.1",
+    "apify": "^3.1.2",
     "cheerio": "1.0.0-rc.12",
-    "crawlee": "^3.1.4",
+    "crawlee": "^3.2.2",
     "fecha": "^4.2.3",
-    "sanitize-html": "^2.8.1"
+    "sanitize-html": "^2.10.0"
   },
   "devDependencies": {
-    "@types/node": "^16.18.11",
+    "@types/node": "^16.18.12",
     "@types/sanitize-html": "^2.8.0",
-    "typescript": "^4.9.4"
+    "typescript": "^4.9.5"
   },
   "exports": {
     ".": {
