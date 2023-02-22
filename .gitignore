@@ -18,4 +18,4 @@ tsconfig.tsbuildinfo
 # Those are symlinked/copied before building the image
 /.actor
 /INPUT_SCHEMA.json
-/.Dockerfile
+/Dockerfile
