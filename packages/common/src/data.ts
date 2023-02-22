@@ -1,5 +1,5 @@
 import { Actor } from 'apify';
-import { RequestState, log } from 'crawlee';
+import { log } from 'crawlee';
 import type { IOptions } from 'sanitize-html';
 import { parseDate } from './date.js';
 import { sanitize } from './sanitize.js';
@@ -76,19 +76,34 @@ export async function pushData(data: Data | Data[]): Promise<void> {
     return;
   }
 
-  const requestQueue = await Actor.openRequestQueue();
-  const nowISO = new Date().toISOString();
+  // TODO: apify-client is not yet up-to-date:
+  //   ERROR Request batch insert failed
+  //   ApifyApiError: Invalid value provided in requests: requests.0.handledAt must be of type Date(details: type=schema-validation)
+  //     clientMethod: RequestQueueClient.batchAddRequests
+  //     statusCode: 400
+  //     type: schema-validation
+  //     attempt: 1
+  //     httpMethod: post
+  //     path: /v2/request-queues/BMM7W3VSBmYUgGprd/requests/batch
+  //     stack:
+  //       at makeRequest (/usr/src/app/packages/hearthstone/node_modules/.pnpm/apify-client@2.6.3/node_modules/apify-client/dist/http_client.js:183:30)
+  //       at processTicksAndRejections (node:internal/process/task_queues:96:5)
+  //       at async RequestQueueClient._batchAddRequests (/usr/src/app/packages/hearthstone/node_modules/.pnpm/apify-client@2.6.3/node_modules/apify-client/dist/resource_clients/request_queue.js:136:26)
+  //       at async RequestQueueClient._batchAddRequestsWithRetries (/usr/src/app/packages/hearthstone/node_modules/.pnpm/apify-client@2.6.3/node_modules/apify-client/dist/resource_clients/request_queue.js:159:34)
 
-  // Then, make sure that each patchnote URL on pages with multiple ones (like heartstone) are added in request queue
-  await requestQueue.addRequests(
-    cleaned.map((d) => ({
-      method: 'GET',
-      uniqueKey: d.url,
-      url: d.url,
-      handledAt: nowISO,
-      state: RequestState.DONE,
-    })),
-  );
+  // const requestQueue = await Actor.openRequestQueue();
+  // const nowISO = new Date().toISOString();
+
+  // // Then, make sure that each patchnote URL on pages with multiple ones (like heartstone) are added in request queue
+  // await requestQueue.addRequests(
+  //   cleaned.map((d) => ({
+  //     method: 'GET',
+  //     uniqueKey: d.url,
+  //     url: d.url,
+  //     handledAt: nowISO,
+  //     state: RequestState.DONE,
+  //   })),
+  // );
 
   log.info('Pushing data.', { size: cleaned.length });
 
