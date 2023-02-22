@@ -1,4 +1,5 @@
 import { Actor } from 'apify';
+import { RequestState, log } from 'crawlee';
 import type { IOptions } from 'sanitize-html';
 import { parseDate } from './date.js';
 import { sanitize } from './sanitize.js';
@@ -55,6 +56,41 @@ function cleanData({ url, date, title, content, sanitizeOptions }: Data): Data {
 }
 
 export async function pushData(data: Data | Data[]): Promise<void> {
-  const cleaned: Data | Data[] = Array.isArray(data) ? data.map(cleanData) : cleanData(data);
+  let cleaned: Data[] = Array.isArray(data) ? data.map(cleanData) : [cleanData(data)];
+
+  // Make sure that data does not exists yet for current URLs, because request queue entries are only kept 7 days
+  const dataset = await Actor.openDataset();
+
+  const existingUrls = new Set(
+    (
+      await dataset.getData({
+        clean: true,
+        fields: ['url'],
+      })
+    ).items.map((d) => d.url as string),
+  );
+
+  cleaned = cleaned.filter((d) => !existingUrls.has(d.url));
+  if (cleaned.length === 0) {
+    log.info('Pushing no data.');
+    return;
+  }
+
+  const requestQueue = await Actor.openRequestQueue();
+  const nowISO = new Date().toISOString();
+
+  // Then, make sure that each patchnote URL on pages with multiple ones (like heartstone) are added in request queue
+  await requestQueue.addRequests(
+    cleaned.map((d) => ({
+      method: 'GET',
+      uniqueKey: d.url,
+      url: d.url,
+      handledAt: nowISO,
+      state: RequestState.DONE,
+    })),
+  );
+
+  log.info('Pushing data.', { size: cleaned.length });
+
   await Actor.pushData(cleaned);
 }

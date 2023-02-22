@@ -7,7 +7,7 @@
 // For more information, see https://sdk.apify.com
 import { Actor } from 'apify';
 // For more information, see https://crawlee.dev
-import { CheerioCrawler, RequestHandler } from 'crawlee';
+import { CheerioCrawler, RequestHandler, Configuration } from 'crawlee';
 
 export async function main(options: {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -18,6 +18,15 @@ export async function main(options: {
 }) {
   if (!options.packageJson?.config?.slug) {
     throw new Error('Missing { "config": { "slug": "..." } } in package.json');
+  }
+
+  // Set the global configuration
+  const config = Configuration.getGlobalConfig();
+  if (config.get('defaultDatasetId') === 'default') {
+    config.set('defaultDatasetId', options.packageJson.config.slug);
+  }
+  if (config.get('defaultRequestQueueId') === 'default') {
+    config.set('defaultRequestQueueId', options.packageJson.config.slug);
   }
 
   // Initialize the Apify SDK
