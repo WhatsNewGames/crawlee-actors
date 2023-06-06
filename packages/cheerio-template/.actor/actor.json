@@ -1,11 +1,11 @@
 {
-  "name": "{{SLUG}}",
-  "version": "0.1",
-  "buildTag": "latest",
-  "env": {
+  "actorSpecification": 1,
+  "environmentVariables": {
     "FOLDER": "{{FOLDER}}",
     "APIFY_DEFAULT_DATASET_ID": "{{DATASET_ID}}",
     "APIFY_DEFAULT_REQUEST_QUEUE_ID": "{{REQUEST_QUEUE_ID}}"
   },
-  "template": "project_cheerio_crawler_ts"
+  "name": "{{SLUG}}",
+  "version": "0.1",
+  "buildTag": "latest"
 }

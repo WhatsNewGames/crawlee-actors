@@ -1,11 +1,11 @@
 {
-  "name": "diablo-iv",
-  "version": "0.1",
-  "buildTag": "latest",
-  "env": {
+  "actorSpecification": 1,
+  "environmentVariables": {
     "FOLDER": "diablo-iv",
     "APIFY_DEFAULT_DATASET_ID": "diablo-iv",
     "APIFY_DEFAULT_REQUEST_QUEUE_ID": "diablo-iv"
   },
-  "template": "project_cheerio_crawler_ts"
+  "name": "diablo-iv",
+  "version": "0.1",
+  "buildTag": "latest"
 }
